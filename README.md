@@ -90,7 +90,7 @@ So we docker-build the image once:
 
 ```bash
 # docker-build runtime image once
-docker build -t gacela \
+docker build -t gacela-example \
   --build-arg USER_ID=$(id -u) \
   --build-arg USER=$USER \
   .docker
@@ -103,17 +103,17 @@ docker build -t gacela \
 cd <example>
 
 # php-build application - sources and builds are in your host's project root
-docker run -it --rm --name gacela \
+docker run -it --rm --name gacela-example \
   -v $PWD:/app \
   -w /app \
-  gacela \
+  gacela-example \
   composer install
 
 # run example - builds are in your host's project root
-docker run -it --rm --name gacela \
+docker run -it --rm --name gacela-example \
   -v $PWD:/app \
   -w /app \
-  gacela \
+  gacela-example \
   php app.php
 ```
 
@@ -127,10 +127,10 @@ You may furtherly use the docker image to develop remotely in a container:
 
 ```bash
 # first start the remote runtime
-docker run -d --rm --name gacela -v $PWD:/app -w /app gacela sleep infinity
+docker run -d --rm --name gacela-example -v $PWD:/app -w /app gacela-example sleep infinity
 
 # then enter it on console level and do your development tasks
-docker exec -it gacela bash
+docker exec -it gacela-example bash
 
 # on the host
 # ... edit your files
@@ -140,7 +140,7 @@ docker exec -it gacela bash
 # ... and then exit
 
 # cleanup
-docker rm -f gacela
+docker rm -f gacela-example
 ```
 
 ### In IDEs
