@@ -81,6 +81,7 @@ php app.php
 ```
 
 ### Run app 'remotely' dockerized
+
 #### Preliminary
 
 If you do local development with a [typical dockerized environment preconfigured](https://docs.docker.com/get-docker/) you can docker-build and use a docker image as runtime. All docker-build-information is in ```./.docker```.
@@ -105,6 +106,7 @@ cd <example>
 docker run -it --rm --name gacela \
   -v $PWD:/app \
   -w /app \
+  gacela \
   composer install
 
 # run example - builds are in your host's project root
