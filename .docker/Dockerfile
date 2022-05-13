@@ -22,11 +22,11 @@ RUN curl -sS https://xdebug.org/files/xdebug-3.1.4.tgz | tar xz \
 
 RUN apk add --no-cache bash git sudo
 
-ARG USER_ID
+ARG USERID
 ARG USER
 
 # if user with id uid doesnt exist add her
-RUN id -u $USER_ID > /dev/null 2>&1 || adduser -D -s /bin/bash -u $USER_ID $USER \
+RUN id -u $USERID > /dev/null 2>&1 || adduser -D -s /bin/bash -u $USERID $USER \
     && echo "$user  ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 COPY --chown=$USER:$USER bashrc /home/$USER/.bashrc
